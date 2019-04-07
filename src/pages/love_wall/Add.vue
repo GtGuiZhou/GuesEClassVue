@@ -68,7 +68,20 @@
                     :form="form"
                     @change="template => {form.template = template;show = 'form'}"></love-wall-template>
         </div>
-
+        <van-dialog
+                :beforeClose="closeQr"
+                v-model="showQr"
+                title="提示"
+                show-cancel-button
+                confirmButtonText="返回上一页"
+        >
+            <div style="text-align: center">
+                <vue-qr
+                        :bgSrc='qrImg'
+                        :text="qr_url" ></vue-qr>
+                扫描上方二维码，也可以看到你的表白信件哦！
+            </div>
+        </van-dialog>
     </div>
 </template>
 
@@ -77,13 +90,16 @@
     import crud from '@/components/mixins/crud'
     import {FileSysUploadUrl} from "@/api/sys.file"
     import LoveWallTemplate from "./Template";
-
+    import VueQr from 'vue-qr'
+    import qrSrc from '@/assets/qr.png'
     export default {
         name: "LoveWallAdd",
         mixins: [crud],
-        components: {LoveWallTemplate, ElUpload},
+        components: {LoveWallTemplate, ElUpload,VueQr},
         data() {
             return {
+                qr_url: '',
+                showQr: false,
                 show: 'form',
                 templates: [],
                 form: {
@@ -100,9 +116,17 @@
         computed: {
             uploadUrl(){
                 return FileSysUploadUrl();
+            },
+            qrImg(){
+                return qrSrc
             }
         },
         methods: {
+            closeQr (action,done) {
+                done(true)
+                if (action === 'confirm')
+                    this.$router.back()
+            },
             question() {
                 this.$dialog.alert({
                     title: '提示',
@@ -111,8 +135,9 @@
             },
             submit(){
                 this.onAdd('lovewall',this.form).then(
-                    () => {
-                        this.$router.back()
+                    res => {
+                        this.qr_url = res.qr_code
+                        this.showQr = true
                     }
                 )
             },
