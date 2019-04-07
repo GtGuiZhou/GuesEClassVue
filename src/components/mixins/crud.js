@@ -113,9 +113,9 @@ export default {
          * @param id
          * @param form 将读取的信息放入到form里面
          */
-        onRead(module,id, form) {
+        onRead(module,id, form,params) {
             this.crudLoading = true
-            Api.Read(module,id).then(
+            Api.Read(module,id,params).then(
                 res => {
                     if (this.crudReadSuccessMsg)
                         this.successNotify(this.crudReadSuccessMsg)
@@ -187,20 +187,24 @@ export default {
          * @param items 将加载到的数据直接放入items
          */
         onLoadAll(module,items,params) {
-            this.crudLoading = true
-            Api.IndexAll(module,params).then(
-                res => {
-                    if (this.crudLoadAllSuccessMsg)
-                        this.successNotify(this.crudLoadAllSuccessMsg)
-                    items.splice(0, items.length)
-                    res.forEach(item => items.push(item))
-                    this.crudLoading = false
-                }
-            ).catch(
-                () => {
-                    this.crudLoading = false
-                }
-            )
+            return new Promise((resolve, reject) => {
+                this.crudLoading = true
+                Api.IndexAll(module,params).then(
+                    res => {
+                        if (this.crudLoadAllSuccessMsg)
+                            this.successNotify(this.crudLoadAllSuccessMsg)
+                        items.splice(0, items.length)
+                        res.forEach(item => items.push(item))
+                        this.crudLoading = false
+                        return resolve(res)
+                    }
+                ).catch(
+                    res => {
+                        this.crudLoading = false
+                        return reject(res)
+                    }
+                )
+            })
         }
         ,
 

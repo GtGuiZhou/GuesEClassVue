@@ -30,11 +30,6 @@ export default new Router({
             component: resolve => require(['@/pages/repair/Index.vue'], resolve)
         },
         {
-            path: '/zf',
-            name: 'ZF',
-            component: resolve => require(['@/pages/zf/Index.vue'], resolve)
-        },
-        {
             path: '/zf/update',
             name: 'ZFUpdate',
             component: resolve => require(['@/pages/zf/Update.vue'], resolve)
@@ -59,6 +54,11 @@ export default new Router({
             path: '/lovewall/add',
             name: 'LoveWallAdd',
             component: resolve => require(['@/pages/love_wall/Add.vue'], resolve)
+        },
+        {
+            path: '/lovewall/view_comment/:id',
+            name: 'LoveWallComment',
+            component: resolve => require(['@/pages/love_wall/ViewComment.vue'], resolve)
         },
         {
             path: '/about',

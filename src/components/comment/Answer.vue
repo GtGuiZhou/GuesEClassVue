@@ -51,6 +51,7 @@
                 this.onAdd('comment',{...this.form,answer_id:this.answer_id}).then(
                     () => {
                         this.form.content = ''
+                        this.$emit('back')
                     }
                 )
             }

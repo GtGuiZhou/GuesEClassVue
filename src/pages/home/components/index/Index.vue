@@ -7,13 +7,28 @@
         <van-cell>
             <div style="display: flex;justify-content: space-between;padding: 0 20px">
                 <span @click="$router.push('/timetable')">
-                    <menu-item icon="star" > 课表</menu-item>
+                    <div style="text-align: center">
+                        <img src="../../../../assets/课表.svg" height="25"/>
+                        <div>课表</div>
+                    </div>
                 </span>
                 <span @click="$router.push('/scorereport')">
-                    <menu-item icon="star" > 成绩</menu-item>
+                    <div style="text-align: center">
+                        <img src="../../../../assets/成绩.svg" height="25"/>
+                        <div>成绩</div>
+                    </div>
                 </span>
                 <span @click="$router.push('/repair')">
-                <menu-item icon="setting" > 报修</menu-item>
+                    <div style="text-align: center">
+                        <img src="../../../../assets/维修.svg" height="25"/>
+                        <div>维修</div>
+                    </div>
+                </span>
+                <span @click="$router.push('/qa')">
+                    <div style="text-align: center">
+                        <img src="../../../../assets/问答.svg" height="25"/>
+                        <div>问答</div>
+                    </div>
                 </span>
             </div>
         </van-cell>
@@ -24,16 +39,19 @@
                         @click="$router.push('/lovewall')"
                         class="banner"
                         v-for="(image, index) in images" :key="index">
-                    <img :src="image" />
+                    <img :src="image"/>
                 </van-swipe-item>
             </van-swipe>
         </van-cell>
+
+        <index-list></index-list>
     </div>
 </template>
 
 <script>
-    import wallImg from "@/assets/wall.png"
-    import MenuItem from "./MenuItem";
+    import wallImg from "@/assets/wall2.jpg"
+    import IndexList from "../list/List";
+
     export default {
         name: "Index",
         data() {
@@ -46,12 +64,12 @@
                 ]
             }
         },
-        components: {MenuItem}
+        components: {IndexList}
     }
 </script>
 
 <style scoped>
-    .banner img{
+    .banner img {
         width: 100%;
         height: 125px;
         border-radius: 15px;

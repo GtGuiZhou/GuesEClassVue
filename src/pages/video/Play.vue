@@ -40,7 +40,7 @@
         mixins: [crud],
         data() {
             return {
-                active: 1,
+                active: 0,
                 form: {
                     url: '',
                     title: '',

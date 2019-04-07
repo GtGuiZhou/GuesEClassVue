@@ -105,9 +105,10 @@ export function Update (module,id,data) {
  * @param module
  * @param id
  */
-export function Read (module,id) {
+export function Read (module,id,params) {
   return request({
     url: `/${module}/read/id/${id}`,
     method: 'get',
+    params
   })
 }

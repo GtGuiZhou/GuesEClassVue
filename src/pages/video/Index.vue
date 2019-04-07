@@ -1,27 +1,26 @@
 <template>
     <div>
+        <van-cell>
+            <strong style="font-size: 1.7em">视频</strong>
+        </van-cell>
         <div v-loading="crudLoading">
-            <van-cell
-                    @click="$router.push('/video/play/' + item.id)"
-                    v-for="(item,index) in items" :key="index" class="video">
-                <div style="position: relative">
-                    <div class="play">
-                        <van-icon name="play-circle" size="4rem"></van-icon>
-                    </div>
-                    <img :src="item.cover_url + '&size=400'">
-                </div>
-                <strong>{{item.title}}</strong>
-                <br>
-                {{item.desc_text}}
-            </van-cell>
+           <video-card
+                   v-for="(item,index) in items" :key="index"
+                   :id="item.id"
+                   :desc_text="item.desc_text"
+                   :title="item.title"
+                   :cover_url="item.cover_url"
+           ></video-card>
         </div>
     </div>
 </template>
 
 <script>
     import crud from '@/components/mixins/crud'
+    import VideoCard from "./Card";
     export default {
         name: "VideoIndex",
+        components: {VideoCard},
         mixins: [crud],
         data () {
             return {
@@ -35,20 +34,5 @@
 </script>
 
 <style scoped>
-    .video img{
-        width: 100%;
-        height: 200px;
-        border-radius: 20px;
-    }
 
-    .play {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        left: 0;
-        top: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
 </style>

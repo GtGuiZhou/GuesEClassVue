@@ -6,7 +6,12 @@
                 v-model="form.content" clearable placeholder="请输入评论内容">
             <van-button slot="button" size="small" type="primary" @click="submit">发送</van-button>
         </van-field>
-        <div v-loading="crudLoading">
+        <div
+                v-if="items.length < 1"
+                style="color: gray;text-align: center">
+            <img src="../../assets/暂无内容.svg" />
+        </div>
+        <div >
             <van-cell
                     v-for="(item,index) in items" :key="index"
             >

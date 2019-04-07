@@ -28,9 +28,10 @@
     import Setting from "./components/setting/Index";
     import Index from "./components/index/Index";
     import VideoIndex from "../video/Index";
+
     export default {
         name: "Home",
-        components: {VideoIndex, Index, Setting},
+        components: { VideoIndex, Index, Setting},
         data(){
             return {
                 show: false,
