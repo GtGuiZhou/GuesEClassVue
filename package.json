@@ -10,6 +10,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "core-js": "^2.6.5",
+    "dayjs": "^1.8.12",
     "element-ui": "^2.7.2",
     "vant": "^1.6.12",
     "vue": "^2.6.6",
