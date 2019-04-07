@@ -45,6 +45,27 @@ export default new Router({
             component: resolve => require(['@/pages/video/Upload.vue'], resolve)
         },
         {
+            path: '/video/play/:id',
+            name: 'VideoPlay',
+            component: resolve => require(['@/pages/video/Play.vue'], resolve)
+        },
+        // 表白墙
+        {
+            path: '/lovewall',
+            name: 'LoveWall',
+            component: resolve => require(['@/pages/love_wall/Index.vue'], resolve)
+        },
+        {
+            path: '/lovewall/add',
+            name: 'LoveWallAdd',
+            component: resolve => require(['@/pages/love_wall/Add.vue'], resolve)
+        },
+        {
+            path: '/about',
+            name: 'About',
+            component: resolve => require(['@/pages/about/Index.vue'], resolve)
+        },
+        {
             path: '*',
             name: '404',
             component: resolve => require(['@/pages/404.vue'], resolve)

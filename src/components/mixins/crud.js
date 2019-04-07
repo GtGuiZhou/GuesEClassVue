@@ -36,21 +36,25 @@ export default {
          * @param items 数组类型,如果不为空，新增的表单会插入该items
          */
         onAdd(module,form, items = null) {
-            this.crudAddLoading = true
-            Api.Add(module,form).then(
-                res => {
-                    if (this.crudAddSuccessMsg)
-                        this.successNotify(this.crudAddSuccessMsg)
-                    if (items instanceof Array) {
-                        items.push(res)
+            return new Promise((resolve, reject) => {
+                this.crudAddLoading = true
+                Api.Add(module, form).then(
+                    res => {
+                        if (this.crudAddSuccessMsg)
+                            this.successNotify(this.crudAddSuccessMsg)
+                        if (items instanceof Array) {
+                            items.push(res)
+                        }
+                        this.crudAddLoading = false
+                        resolve(res);
                     }
-                    this.crudAddLoading = false
-                }
-            ).catch(
-                () => {
-                    this.crudAddLoading = false
-                }
-            )
+                ).catch(
+                    res => {
+                        this.crudAddLoading = false
+                        reject(res);
+                    }
+                )
+            })
         },
 
         /**
@@ -182,9 +186,9 @@ export default {
          * @param module
          * @param items 将加载到的数据直接放入items
          */
-        onLoadAll(module,items) {
+        onLoadAll(module,items,params) {
             this.crudLoading = true
-            Api.IndexAll(module).then(
+            Api.IndexAll(module,params).then(
                 res => {
                     if (this.crudLoadAllSuccessMsg)
                         this.successNotify(this.crudLoadAllSuccessMsg)

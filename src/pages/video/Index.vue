@@ -1,8 +1,15 @@
 <template>
     <div>
         <div v-loading="crudLoading">
-            <van-cell v-for="(item,index) in items" :key="index" class="video">
-                <img :src="item.cover_url + '&size=150'">
+            <van-cell
+                    @click="$router.push('/video/play/' + item.id)"
+                    v-for="(item,index) in items" :key="index" class="video">
+                <div style="position: relative">
+                    <div class="play">
+                        <van-icon name="play-circle" size="4rem"></van-icon>
+                    </div>
+                    <img :src="item.cover_url + '&size=400'">
+                </div>
                 <strong>{{item.title}}</strong>
                 <br>
                 {{item.desc_text}}
@@ -32,5 +39,16 @@
         width: 100%;
         height: 200px;
         border-radius: 20px;
+    }
+
+    .play {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 </style>

@@ -21,6 +21,7 @@
         <van-cell>
             <van-swipe :autoplay="3000" style="text-align: center">
                 <van-swipe-item
+                        @click="$router.push('/lovewall')"
                         class="banner"
                         v-for="(image, index) in images" :key="index">
                     <img :src="image" />

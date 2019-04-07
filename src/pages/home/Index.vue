@@ -13,7 +13,7 @@
         >
             <van-tabbar-item  icon="home-o">首页</van-tabbar-item>
             <van-tabbar-item icon="play-circle-o">视频</van-tabbar-item>
-            <van-tabbar-item icon="setting-o">提问</van-tabbar-item>
+            <van-tabbar-item icon="setting-o">设置</van-tabbar-item>
         </van-tabbar>
 
         <van-popup v-model="show" position="bottom" >

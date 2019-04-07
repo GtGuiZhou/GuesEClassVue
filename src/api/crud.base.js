@@ -29,10 +29,11 @@ export function Index (module,page) {
 /**
  * 获取所有数据
  */
-export function IndexAll (module) {
+export function IndexAll (module,params) {
   return request({
     url: `/${module}/indexAll`,
-    method: 'get'
+    method: 'get',
+    params
   })
 }
 
@@ -56,7 +57,7 @@ export function IndexOfTrashed (module,page) {
  */
 export function Recover (module,id) {
   return request({
-    url: `/${module}/recover/${id}`,
+    url: `/${module}/recover/id/${id}`,
     method: 'put',
   })
 }
@@ -68,7 +69,7 @@ export function Recover (module,id) {
  */
 export function Delete (module,id) {
   return request({
-    url: `/${module}/delete/${id}`,
+    url: `/${module}/delete/id/${id}`,
     method: 'delete'
   })
 }
@@ -80,7 +81,7 @@ export function Delete (module,id) {
  */
 export function DeleteReal (module,id) {
   return request({
-    url: `/${module}/deleteReal/${id}`,
+    url: `/${module}/deleteReal/id/${id}`,
     method: 'delete'
   })
 }
@@ -93,7 +94,7 @@ export function DeleteReal (module,id) {
  */
 export function Update (module,id,data) {
   return request({
-    url: `/${module}/update/${id}`,
+    url: `/${module}/update/id/${id}`,
     method: 'put',
     data
   })
@@ -106,7 +107,7 @@ export function Update (module,id,data) {
  */
 export function Read (module,id) {
   return request({
-    url: `/${module}/read/${id}`,
+    url: `/${module}/read/id/${id}`,
     method: 'get',
   })
 }

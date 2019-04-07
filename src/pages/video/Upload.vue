@@ -57,7 +57,7 @@
 <script>
     import crud from '../../components/mixins/crud'
     import {Upload as ElUpload} from 'element-ui'
-    import {FileSysUploadUrl} from "@/api/sys.file";
+    import {FileSysUploadUrl} from "@/api/sys.file"
     export default {
         name: "VideoUpload",
         components: {ElUpload},
