@@ -1,31 +1,42 @@
 <template>
     <div>
-
+        <van-nav-bar
+                left-arrow
+                left-text="返回"
+                title="发起提问"
+                @click-left="$router.back(-1)"
+        />
+        <van-field
+                v-model="form.content"
+                type="textarea"
+                placeholder="请输入问题内容"
+                rows="4"
+                autosize
+        />
+        <van-cell>
+            <van-button type="warning" size="large" @click="submit" >提交</van-button>
+        </van-cell>
     </div>
 </template>
 
 <script>
-    import crud from '@/components/mixins/crud'
-
-    const module = 'Add'
+    const module = 'qa'
     export default {
         name: "QaAdd",
-        mixins: [crud],
         data() {
             return {
-                items: [],
-                form: {}
+                form: {
+                    content: ''
+                }
             }
-        },
-        created() {
-            if ('id' in this.$route.params) {
-                this.onRead(module, this.form)
-            }
-            this.onLoadAll(module, this.items)
         },
         methods: {
             submit() {
-                this.onAdd(module, this.form, this.items)
+                this.onAdd(module, this.form).then(
+                    () => {
+                        this.$router.back()
+                    }
+                )
             }
         }
     }

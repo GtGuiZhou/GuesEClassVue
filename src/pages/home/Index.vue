@@ -18,7 +18,7 @@
 
         <van-popup v-model="show" position="bottom" >
             <van-cell @click="$router.push('/video/upload')">上传视频</van-cell>
-            <van-cell>发起提问</van-cell>
+            <van-cell @click="$router.push('/qa/add')">发起提问</van-cell>
             <van-cell @click="$router.push('/repair')">寝室报修</van-cell>
         </van-popup>
     </div>

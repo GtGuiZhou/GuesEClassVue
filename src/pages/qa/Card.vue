@@ -14,7 +14,7 @@
             <!--内容-->
             <div>
                 <div style="margin: 10px 0">
-                    {{desc_text}}
+                    {{content}}
                 </div>
             </div>
         </van-cell>
@@ -23,7 +23,7 @@
 
 <script>
     export default {
-        props: ['id','desc_text','title','create_time_text'],
+        props: ['id','content','create_time_text','user_name'],
         name: "QaCard",
         data() {
             return {

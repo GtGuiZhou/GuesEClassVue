@@ -77,6 +77,11 @@ export default new Router({
             component: resolve => require(['@/pages/qa/Add.vue'], resolve)
         },
         {
+            path: '/qa/answer/:id',
+            name: 'QaAdd',
+            component: resolve => require(['@/pages/qa/Answer.vue'], resolve)
+        },
+        {
             path: '*',
             name: '404',
             component: resolve => require(['@/pages/404.vue'], resolve)
