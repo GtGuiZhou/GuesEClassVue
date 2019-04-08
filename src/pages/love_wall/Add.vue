@@ -77,8 +77,10 @@
         >
             <div style="text-align: center">
                 <vue-qr
+                        style="width: 100%"
                         :bgSrc='qrImg'
                         :text="qr_url" ></vue-qr>
+                <br>
                 扫描上方二维码，也可以看到你的表白信件哦！
             </div>
         </van-dialog>
@@ -104,7 +106,7 @@
                 templates: [],
                 form: {
                     content: '致最最最可爱漂亮的小菲菲',
-                    form_name: '郭涛',
+                    from_name: '郭涛',
                     to_name: '钟颖菲',
                     image_url: 'http://gues.eclass.cn/api/filesys/read?filename=84fb0ded098c535f7feb7b03b7907200.png',
                     from_email: '735311619@qq.com',
