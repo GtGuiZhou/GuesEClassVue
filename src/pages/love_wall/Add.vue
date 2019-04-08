@@ -89,14 +89,12 @@
 
 <script>
     import {Upload as ElUpload} from 'element-ui'
-    import crud from '@/components/mixins/crud'
     import {FileSysUploadUrl} from "@/api/sys.file"
     import LoveWallTemplate from "./Template";
     import VueQr from 'vue-qr'
     import qrSrc from '@/assets/qr.png'
     export default {
         name: "LoveWallAdd",
-        mixins: [crud],
         components: {LoveWallTemplate, ElUpload,VueQr},
         data() {
             return {
@@ -108,7 +106,8 @@
                     content: '致最最最可爱漂亮的小菲菲',
                     from_name: '郭涛',
                     to_name: '钟颖菲',
-                    image_url: 'http://gues.eclass.cn/api/filesys/read?filename=84fb0ded098c535f7feb7b03b7907200.png',
+                    // image_url: 'http://gues.eclass.cn/api/filesys/read?filename=84fb0ded098c535f7feb7b03b7907200.png',
+                    image_url: '',
                     from_email: '735311619@qq.com',
                     to_email: '735311619@qq.com',
                     template: '',

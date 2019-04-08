@@ -65,6 +65,17 @@ export default new Router({
             name: 'About',
             component: resolve => require(['@/pages/about/Index.vue'], resolve)
         },
+        // 问答模块
+        {
+            path: '/qa',
+            name: 'Qa',
+            component: resolve => require(['@/pages/qa/Index.vue'], resolve)
+        },
+        {
+            path: '/qa/add',
+            name: 'QaAdd',
+            component: resolve => require(['@/pages/qa/Add.vue'], resolve)
+        },
         {
             path: '*',
             name: '404',

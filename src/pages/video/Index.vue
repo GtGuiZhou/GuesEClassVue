@@ -16,12 +16,10 @@
 </template>
 
 <script>
-    import crud from '@/components/mixins/crud'
     import VideoCard from "./Card";
     export default {
         name: "VideoIndex",
         components: {VideoCard},
-        mixins: [crud],
         data () {
             return {
                 items: []

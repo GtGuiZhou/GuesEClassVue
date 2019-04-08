@@ -25,14 +25,12 @@
 </template>
 
 <script>
-    import crud from '@/components/mixins/crud'
     import LoveCard from "./LoveCard";
 
     const module = 'lovewall'
     export default {
         name: "LoveWall",
         components: {LoveCard},
-        mixins: [crud],
         data() {
             return {
                 items: [],

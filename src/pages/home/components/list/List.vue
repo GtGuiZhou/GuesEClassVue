@@ -24,7 +24,6 @@
 </template>
 
 <script>
-    import crud from '@/components/mixins/crud'
     import VideoCard from "../../../video/Card";
     import LoveCard from "../../../love_wall/LoveCard";
 
@@ -32,7 +31,6 @@
     export default {
         name: "IndexList",
         components: {LoveCard, VideoCard},
-        mixins: [crud],
         data() {
             return {
                 items: [],

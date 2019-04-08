@@ -17,10 +17,8 @@
 </template>
 
 <script>
-    import crud from '@/components/mixins/crud'
     export default {
         name: "CommentAnswer",
-        mixins: [crud],
         props: {
             module: {
                 type: String,

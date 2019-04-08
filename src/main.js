@@ -15,7 +15,10 @@ Vue.use(VueLazyLoad,{
   error:require('./assets/loading.svg'),
   loading:require('./assets/loading.svg')
 })
+import crud from '@/components/mixins/crud'
+Vue.mixin(crud)
 Vue.mixin(notify)
+
 Vue.use(Loading)
 Vue.use(Vant);
 Vue.config.productionTip = false
