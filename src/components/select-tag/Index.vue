@@ -4,8 +4,11 @@
         <van-tag
                 plain
                 @click="add(tag,index)"
+                color="rgba(144,147,153,.2)"
                 v-for="(tag,index) in tags" :key="index"
-                type="danger">{{tag}}</van-tag>
+        >
+            <span style="color: #909399">{{tag}}</span>
+        </van-tag>
         <br>
         <br>
         <el-select

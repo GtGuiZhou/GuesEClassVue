@@ -20,7 +20,14 @@
                     <van-cell>
                         <strong>{{form.title}}</strong>
                         <br>
-                        {{form.desc_text}}
+                        <van-tag
+                                color="rgba(144,147,153,.2)"
+                                v-for="(tag,index) in form.tags" :key="index"
+                        >
+                            <span style="color: #909399">{{tag}}</span>
+                        </van-tag>
+                        <br>
+                            {{form.desc_text}}
                     </van-cell>
                 </van-tab>
                 <van-tab title="评论">
@@ -35,7 +42,7 @@
     import crud from '@/components/mixins/crud'
     import CommentIndex from "../../components/comment/Index";
     export default {
-        name: "Play",
+        name: "VideoPlay",
         components: {CommentIndex},
         mixins: [crud],
         data() {
@@ -44,7 +51,8 @@
                 form: {
                     url: '',
                     title: '',
-                    desc_text: ''
+                    desc_text: '',
+                    tags: []
                 }
             }
         },
