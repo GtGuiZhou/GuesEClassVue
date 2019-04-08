@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
+echo '安装包'
 npm i # d2-admin需要用nrm配置npm的源，要不然会出现core-js无法加载的问题
+echo '构建前端工程'
 npx vue-cli-service build --mode production --dest /opt/eclass/GuesEclassTp_v3/public/static/confront --target app --dashboard
 # 这种方法也可以
 # ./node_modules/.bin/vue-cli-service build
