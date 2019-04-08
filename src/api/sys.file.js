@@ -6,7 +6,7 @@ import request from '@/plugin/axios'
  * @return {string}
  */
 export function FileSysUploadUrl () {
-    return 'api/filesys/upload';
+    return '/api/filesys/upload';
 }
 
 export function FileSysUpload (file) {
