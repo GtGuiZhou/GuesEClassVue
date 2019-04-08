@@ -20,6 +20,14 @@
                        rows="3"
                        autosize>
             </van-field>
+
+            <!--选择标签-->
+            <van-cell>
+                <select-tag
+                        :action-method="actionMethod"
+                        @change="tags => form.tags = tags"></select-tag>
+            </van-cell>
+
             <van-cell >
                 <div  style="text-align: center">
                     <el-upload
@@ -58,9 +66,11 @@
     import crud from '../../components/mixins/crud'
     import {Upload as ElUpload} from 'element-ui'
     import {FileSysUploadUrl} from "@/api/sys.file"
+    import SelectTag from "../../components/select-tag/Index";
+    import {TagList} from "../../api/sys.video";
     export default {
         name: "VideoUpload",
-        components: {ElUpload},
+        components: {SelectTag, ElUpload},
         mixins:[crud],
         data () {
             return {
@@ -68,6 +78,7 @@
                 fileList: [],
                 fileListImg: [],
                 form: {
+                    tags: [],
                     title: '',
                     url: '',
                     desc_text: '',
@@ -78,6 +89,9 @@
         computed: {
             uploadUrl(){
                 return FileSysUploadUrl();
+            },
+            actionMethod(){
+                return TagList
             }
         },
         methods : {
