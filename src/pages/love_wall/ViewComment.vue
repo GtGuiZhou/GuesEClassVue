@@ -22,21 +22,18 @@
             </div>
         </van-cell>
         <!--评论-->
-        <comment-index :module="'lovawall:' + $route.params.id"></comment-index>
+        <comment-index :module="'lovewall:' + $route.params.id"></comment-index>
     </div>
 </template>
 
 <script>
-    import crud from '@/components/mixins/crud'
     import CommentIndex from "../../components/comment/Index";
 
     export default {
         name: "ViewComment",
         components: {CommentIndex},
-        mixins: [crud],
         data() {
             return {
-                items: [],
                 item: {
                     content: '',
                     image_url: '',
@@ -46,10 +43,7 @@
             }
         },
         created() {
-            if ('id' in this.$route.params) {
                 this.onRead('lovewall', this.$route.params.id, this.item)
-            }
-            this.onLoadAll('comment', this.items, 'lovewall:' + this.$route.params.id)
         },
         methods: {}
     }

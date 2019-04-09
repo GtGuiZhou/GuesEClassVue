@@ -8,6 +8,10 @@
                 @click-right="save"
                 @click-left="$router.back(-1)"
         />
+        <van-notice-bar
+                text="如果上传按钮点击无效，请点击右上角的x按钮，重新进入本应用（刷新无效）"
+                left-icon="volume-o"
+        />
         <div v-loading="crudAddLoading">
             <van-notice-bar
                     v-if="show"
@@ -38,7 +42,7 @@
                             :on-remove="handleRemoveImg"
                             :action="uploadUrl"
                             :file-list="fileList">
-                        <van-button  type="primary">点击上传封面</van-button>
+                        <van-button plain type="primary">点击上传封面</van-button>
                         <div slot="tip" class="el-upload__tip">只能上传bmp,jpeg,jpg,png,gif文件，且不超过50M</div>
                     </el-upload>
                 </div>
@@ -53,9 +57,15 @@
                             :before-upload="beforeUpload"
                             :action="uploadUrl"
                             :file-list="fileListImg">
-                        <van-button  type="primary">点击上传视频</van-button>
+                        <van-button plain type="primary">点击上传视频</van-button>
                         <div slot="tip" class="el-upload__tip">只能上传mp4,flv,rmvb,avi文件，且不超过50M</div>
                     </el-upload>
+                </div>
+            </van-cell>
+
+            <van-cell >
+                <div style="text-align: center">
+                    <van-button @click="save" size="large" type="primary">保存</van-button>
                 </div>
             </van-cell>
         </div>

@@ -1,5 +1,10 @@
 <template>
     <div>
+        <div
+                v-if="items.length < 1"
+                style="color: gray;text-align: center">
+            <img src="@/assets/暂无内容.svg" />
+        </div>
         <van-panel v-for="(item,index) in items" :key="index">
             <!--表白卡片-->
             <love-card

@@ -18,7 +18,7 @@ export function Login (data) {
  * 验证码
  */
 export function CheckCode () {
-    return `api/${module}/checkcode`
+    return `/api/${module}/checkcode`
 }
 
 

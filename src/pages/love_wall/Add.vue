@@ -16,6 +16,10 @@
         />
 
         <div v-if="show === 'form'">
+            <van-notice-bar
+                    text="如果上传按钮点击无效，请点击右上角的x按钮，重新进入本应用（刷新无效）"
+                    left-icon="volume-o"
+            />
             <van-field
                     v-model="form.content"
                     type="textarea"
@@ -37,6 +41,7 @@
                             :before-upload="beforeUploadImg"
                             :on-remove="handleRemoveImg"
                             :action="uploadUrl"
+                            :file-list="filelist"
                     >
                         <van-button  type="warning" plain hairline>点击上传图片</van-button>
                         <div slot="tip" class="el-upload__tip">只能上传bmp,jpeg,jpg,png,gif文件，且不超过5M</div>
@@ -81,7 +86,8 @@
                         :bgSrc='qrImg'
                         :text="qr_url" ></vue-qr>
                 <br>
-                扫描上方二维码，也可以看到你的表白信件哦！
+                    扫描上方二维码<br>也可以看到你的表白信件哦！
+                <br>
             </div>
         </van-dialog>
     </div>
@@ -93,11 +99,13 @@
     import LoveWallTemplate from "./Template";
     import VueQr from 'vue-qr'
     import qrSrc from '@/assets/qr.png'
+
     export default {
         name: "LoveWallAdd",
         components: {LoveWallTemplate, ElUpload,VueQr},
         data() {
             return {
+                filelist: [],
                 qr_url: '',
                 showQr: false,
                 show: 'form',
@@ -142,8 +150,10 @@
                     }
                 )
             },
-            onSuccessImg(response){
+            onSuccessImg(response,file){
                 this.form.image_url = response.data.url
+                file.url = response.data.url + '&size=100'
+                this.filelist = [file]
             },
             handleRemoveImg() {
                 this.form.image_url = ''
