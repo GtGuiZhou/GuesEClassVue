@@ -31,6 +31,9 @@
             answer_id: {
                 type: Number,
                 required: true
+            },
+            module_id: {
+                type: Number
             }
         },
         data() {
@@ -38,11 +41,13 @@
                 form: {
                     content:'',
                     module: '',
+                    module_id: '',
                 }
             }
         },
         created () {
           this.form.module = this.module
+          this.form.module_id = this.module_id
         },
         methods: {
             submit(){

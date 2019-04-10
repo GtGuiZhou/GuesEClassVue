@@ -43,14 +43,18 @@
           module: {
               type: String,
               required: true
-          }
+          },
+            module_id: {
+                type: Number,
+            }
         },
         data() {
             return {
                 form: {
                     content:'',
                     module: '',
-                    answer_id: 0
+                    answer_id: 0,
+                    module_id: ''
                 },
                 items: [
                 ]
@@ -58,6 +62,7 @@
         },
         created () {
             this.form.module = this.module
+            this.form.module_id = this.module_id
             this.onLoadAll('comment',this.items,{module:this.module})
         },
         methods: {

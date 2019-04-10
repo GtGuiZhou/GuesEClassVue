@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-
+import humanwall from './module/humanwall'
 Vue.use(Router)
 
 export default new Router({
@@ -9,6 +9,7 @@ export default new Router({
         return { x: 0, y: 0 } // 最上、最左边
     },
     routes: [
+        ...humanwall,
         {
             path: '/',
             name: 'Index',

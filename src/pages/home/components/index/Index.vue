@@ -36,10 +36,11 @@
         <van-cell>
             <van-swipe :autoplay="3000" style="text-align: center">
                 <van-swipe-item
-                        @click="$router.push('/lovewall')"
+                        v-for="(item, index) in images" :key="index"
+                        @click="$router.push(item.to)"
                         class="banner"
-                        v-for="(image, index) in images" :key="index">
-                    <img :src="image"/>
+                        >
+                    <img :src="item.src"/>
                 </van-swipe-item>
             </van-swipe>
         </van-cell>
@@ -50,6 +51,7 @@
 
 <script>
     import wallImg from "@/assets/wall2.jpg"
+    import humanwallImg from "@/assets/humanwall.jpeg"
     import IndexList from "../list/List";
 
     export default {
@@ -57,7 +59,14 @@
         data() {
             return {
                 images: [
-                    wallImg
+                    {
+                        src: wallImg,
+                        to: '/lovewall'
+                    },
+                    {
+                        src: humanwallImg,
+                        to: '/humanwall'
+                    }
                     // 'https://img.yzcdn.cn/public_files/2017/09/05/c0dab461920687911536621b345a0bc9.jpg',
                     // 'https://img.yzcdn.cn/public_files/2017/09/05/4e3ea0898b1c2c416eec8c11c5360833.jpg',
                     // 'https://img.yzcdn.cn/public_files/2017/09/05/fd08f07665ed67d50e11b32a21ce0682.jpg'
