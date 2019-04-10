@@ -84,6 +84,16 @@
         created() {
             TimeTable().then(
                 res => {
+                    if (!res){
+                        this.$dialog.confirm({
+                            title: '提示',
+                            message: '暂无课表数据，是否跳转更新？'
+                        }).then(() => {
+                            this.$router.push('zf/update')
+                        });
+                        return;
+                    }
+
                     this.items.splice(0,this.items.length)
                     for (let i in res.time_table){
                         this.items.push(res.time_table[i].match(/(.*?)<br>(.*?)第(.*?)节{第(.*?)-(.*?)周}<br>(.*?)<br>(.*?)/))

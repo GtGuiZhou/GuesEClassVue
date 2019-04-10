@@ -58,6 +58,15 @@
         created() {
             ScoreReport().then(
                 res => {
+                    if (!res){
+                        this.$dialog.confirm({
+                            title: '提示',
+                            message: '暂无课表数据，是否跳转更新？'
+                        }).then(() => {
+                            this.$router.push('zf/update')
+                        });
+                        return;
+                    }
                     res.score_report.reverse().forEach((item) => {
                         item[8] = parseInt(item[8])?parseInt(item[8]):0
                         item[10] = parseInt(item[10])?parseInt(item[10]):0

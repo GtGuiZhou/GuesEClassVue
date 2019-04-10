@@ -59,7 +59,7 @@
         },
         watch : {
             '$store.state.user' (val){
-                if (val.zf_act.length > 1){
+                if (val.zf_act){
                     this.title = this.title + '(已绑定)'
                 }
                 if (this.form.act.length < 1){
