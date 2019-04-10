@@ -50,7 +50,7 @@
             this.onLoadAll(module, tmp).then(
                 () => {
                     tmp.forEach(item => {
-                        this.items.push(JSON.parse(item))
+                        this.items.push(item)
                     })
                 }
             )

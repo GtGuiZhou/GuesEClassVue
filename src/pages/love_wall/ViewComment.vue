@@ -17,8 +17,14 @@
                 <small style="color:gray;">{{item.create_time_text}}</small>
             </div>
             <!--内容-->
-            <div v-html="item.template">
+            <div v-if="item.template" v-html="item.template">
+            </div>
+            <div v-else>
+                <div style="margin: 10px 0">
+                    {{item.content}}
+                </div>
 
+                <img v-lazy="item.image_url + '&size=400'" style="height: 200px">
             </div>
         </van-cell>
         <!--评论-->

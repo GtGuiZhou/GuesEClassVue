@@ -18,7 +18,7 @@
                 <!--表白卡片-->
                 <humanwall-card
                                 :id="item.id"
-                                :create_time_text="item.create_time_text"
+                                :begin_time_text="item.begin_time_text"
                                 :title="item.title"
                                 :cover_url="item.cover_url"
                 ></humanwall-card>

@@ -18,7 +18,7 @@
                        rows="3"
                        autosize>
             </van-field>
-
+            <van-cell title="开始时间" @click="showData = true" is-link :value="currentDate.toLocaleString()"></van-cell>
             <van-cell >
                 <div  style="text-align: center">
                     <el-upload
@@ -41,6 +41,16 @@
                 </div>
             </van-cell>
         </div>
+        <van-datetime-picker
+                @confirm="showData = false"
+                @cancel="showData = false"
+                v-if="showData"
+                v-model="currentDate"
+                type="datetime"
+                :min-date="minDate"
+                :max-date="maxDate"
+        />
+
     </div>
 </template>
 
@@ -48,14 +58,14 @@
     import crud from '../../components/mixins/crud'
     import {Upload as ElUpload} from 'element-ui'
     import {FileSysUploadUrl} from "@/api/sys.file"
-    import SelectTag from "../../components/select-tag/Index";
-    import {TagList} from "../../api/sys.video";
+
     export default {
         name: "VideoUpload",
         components: { ElUpload},
         mixins:[crud],
         data () {
             return {
+                showData: false,
                 show:false,
                 fileList: [],
                 fileListImg: [],
@@ -63,7 +73,12 @@
                     title: '',
                     desc_text: '',
                     cover_url: ''
-                }
+                },
+                minHour: 10,
+                maxHour: 20,
+                minDate: new Date(),
+                maxDate: new Date(2019, 10, 1),
+                currentDate: new Date()
             }
         },
         computed: {
@@ -73,7 +88,7 @@
         },
         methods : {
             save(){
-                this.onAdd('humanwall',this.form).then(
+                this.onAdd('humanwall',{begin_time: parseInt(this.currentDate.getTime() / 1000),...this.form}).then(
                     () => {
                         this.$router.back()
                     }

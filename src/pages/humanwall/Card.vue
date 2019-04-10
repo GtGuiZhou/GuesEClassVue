@@ -8,14 +8,14 @@
             </div>
             <strong>{{title}}</strong>
             <br>
-            创建时间：{{create_time_text}}
+            创建时间：{{begin_time_text}}
         </van-cell>
     </div>
 </template>
 
 <script>
     export default {
-        props: ['id','create_time_text','title','cover_url'],
+        props: ['id','begin_time_text','title','cover_url'],
         name: "HumanwallCard",
         data() {
             return {
