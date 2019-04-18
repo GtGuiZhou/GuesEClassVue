@@ -8,7 +8,7 @@
                 @click-left="$router.back(-1)"
                 @click-right="$router.push('/zf/update')"
         />
-        <van-tabs v-model="active">
+        <van-tabs v-model="active" animated  swipeable>
             <van-tab title="概览">
         <van-search placeholder="可输入课程名称/学年/必修/选修搜索" v-model="search" background="#fff"></van-search>
         <van-cell v-if="!items" style="margin-top: 100px;"  @click="$router.push('/zf/update')">
