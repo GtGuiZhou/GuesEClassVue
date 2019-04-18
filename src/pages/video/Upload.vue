@@ -54,7 +54,7 @@
                             list-type="picture"
                             :on-remove="handleRemove"
                             :on-success="onSuccess"
-                            :before-upload="beforeUpload"
+                            :http-request="httpRequest"
                             :action="uploadUrl"
                             :file-list="fileListImg">
                         <van-button plain type="primary">点击上传视频</van-button>
@@ -78,6 +78,7 @@
     import {FileSysUploadUrl} from "@/api/sys.file"
     import SelectTag from "../../components/select-tag/Index";
     import {TagList} from "../../api/sys.video";
+
     export default {
         name: "VideoUpload",
         components: {SelectTag, ElUpload},
@@ -105,6 +106,36 @@
             }
         },
         methods : {
+            // httpRequest (blob){
+            //     console.log(blob)
+            //     var start = 0;
+            //     var end;
+            //     var index = 0;
+            //     var filesize = blob.size;
+            //     var filename = blob.name;
+            //
+            //     //计算文件切片总数
+            //     let bytesPerPiece = 10 * 1024 * 1024
+            //     // let totalPieces = Math.ceil(filesize / bytesPerPiece);
+            //         // var sliceIndex= blob.name + index;
+            //         let upload = function () {
+            //             if (start < filesize) {
+            //                 end = start + bytesPerPiece;
+            //                 if (end > filesize) {
+            //                     end = filesize;
+            //                 }
+            //                 var chunk = blob.slice(start, end);//切割文件
+            //                 this.FileClipUpload(chunk).then(
+            //                     () => {
+            //                         start = end;
+            //                         index++;
+            //                         upload()
+            //                     }
+            //                 )
+            //             }
+            //         }
+            //     }
+            // },
             save(){
                 this.onAdd('video',this.form)
             },
