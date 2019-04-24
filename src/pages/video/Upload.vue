@@ -78,6 +78,7 @@
     import {FileSysUploadUrl} from "@/api/sys.file"
     import SelectTag from "../../components/select-tag/Index";
     import {TagList} from "../../api/sys.video";
+    import {FileClipUpload} from "../../api/sys.file";
 
     export default {
         name: "VideoUpload",
@@ -106,36 +107,13 @@
             }
         },
         methods : {
-            // httpRequest (blob){
-            //     console.log(blob)
-            //     var start = 0;
-            //     var end;
-            //     var index = 0;
-            //     var filesize = blob.size;
-            //     var filename = blob.name;
-            //
-            //     //计算文件切片总数
-            //     let bytesPerPiece = 10 * 1024 * 1024
-            //     // let totalPieces = Math.ceil(filesize / bytesPerPiece);
-            //         // var sliceIndex= blob.name + index;
-            //         let upload = function () {
-            //             if (start < filesize) {
-            //                 end = start + bytesPerPiece;
-            //                 if (end > filesize) {
-            //                     end = filesize;
-            //                 }
-            //                 var chunk = blob.slice(start, end);//切割文件
-            //                 this.FileClipUpload(chunk).then(
-            //                     () => {
-            //                         start = end;
-            //                         index++;
-            //                         upload()
-            //                     }
-            //                 )
-            //             }
-            //         }
-            //     }
-            // },
+            httpRequest (file){
+                FileClipUpload(file.file).then(
+                    () => {
+                        this.$toast('上传成功')
+                    }
+                )
+            },
             save(){
                 this.onAdd('video',this.form)
             },

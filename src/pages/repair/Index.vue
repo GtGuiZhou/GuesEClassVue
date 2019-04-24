@@ -45,6 +45,7 @@
                 Add(this.form).then(
                     () => {
                         this.$toast('提交成功')
+                        this.$router.back()
                     }
                 ).catch(
                     () => {

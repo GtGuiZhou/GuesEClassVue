@@ -2,16 +2,37 @@ import request from '@/plugin/axios'
 
 let module = 'repair'
 
+
 /**
- * 新增数据
- * @param data
+ * 订单催促
  * @constructor
  */
-export function Add (data) {
+export function Cnt (id) {
   return request({
-    url: `/${module}/add`,
-    method: 'post',
-    data
+    url: `/${module}/cnt/id/` + id,
+    method: 'put'
+  })
+}
+
+/**
+ * 订单完成
+ * @constructor
+ */
+export function Handled (id) {
+  return request({
+    url: `/${module}/handled/id/` + id,
+    method: 'put'
+  })
+}
+
+/**
+ * 订单关闭
+ * @constructor
+ */
+export function Close (id) {
+  return request({
+    url: `/${module}/close/id/${id}`,
+    method: 'put'
   })
 }
 
@@ -49,6 +70,19 @@ export function IndexOfTrashed (page) {
     url: `/${module}/indexOfTrashed`,
     method: 'get',
     params: page
+  })
+}
+
+/**
+ * 新增数据
+ * @param data
+ * @constructor
+ */
+export function Add (data) {
+  return request({
+    url: `/${module}/add`,
+    method: 'post',
+    data
   })
 }
 

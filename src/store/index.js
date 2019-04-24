@@ -15,7 +15,7 @@ export default new Vuex.Store({
             state.loading = false
         },
         initUser(state,user){
-            state.user = user
+            if (user) state.user = user
         }
     },
     actions: {
