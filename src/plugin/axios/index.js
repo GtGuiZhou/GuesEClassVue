@@ -47,6 +47,10 @@ service.interceptors.response.use(
                 case 0:
                     // [ 示例 ] code === 0 代表没有错误
                     return dataAxios.data
+                case 401: //跳转登录
+                    window.location.href = ' http://f.yiban.cn/iapp265757'
+                    errorCreate(`请先登录`)
+                    break;
                 case 'xxx':
                     // [ 示例 ] 其它和后台约定的 code
                     errorCreate(`${dataAxios.msg}`)
