@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import humanwall from './module/humanwall'
+import setting from './module/setting'
 Vue.use(Router)
 
 export default new Router({
@@ -9,6 +10,7 @@ export default new Router({
         return { x: 0, y: 0 } // 最上、最左边
     },
     routes: [
+        ...setting,
         ...humanwall,
         {
             path: '/',
@@ -87,5 +89,6 @@ export default new Router({
             name: '404',
             component: resolve => require(['@/pages/404.vue'], resolve)
         },
+
     ]
 })
