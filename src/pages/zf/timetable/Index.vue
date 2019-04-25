@@ -67,7 +67,7 @@
                         })
                         if (item) {
                             tmp[this.week[j]] = {
-                                text:item[0],
+                                text:item.text,
                                 kc:  item[1]
                             }
                         }else
@@ -96,7 +96,7 @@
 
                     this.items.splice(0,this.items.length)
                     for (let i in res.time_table){
-                        this.items.push(res.time_table[i].match(/(.*?)<br>(.*?)第(.*?)节{第(.*?)-(.*?)周}<br>(.*?)<br>(.*?)/))
+                        this.items.push({...res.time_table[i].match(/(.*?)<br>(.*?)第(.*?)节{第(.*?)-(.*?)周}<br>(.*?)<br>(.*?)/),text: res.time_table[i]})
                     }
                 }
             )
