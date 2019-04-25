@@ -11,7 +11,7 @@
             <van-field
                     v-model="form.content"
                     type="textarea"
-                    placeholder="请输入在这儿意见反馈内容"
+                    placeholder="请在这儿输入意见反馈内容"
                     rows="4"
                     autosize
             />

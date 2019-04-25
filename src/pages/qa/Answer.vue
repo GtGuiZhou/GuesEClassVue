@@ -25,7 +25,7 @@
                 </div>
             </div>
         </van-cell>
-        <comment-index module="qa"></comment-index>
+        <comment-index :module="'qa:' + $route.params.id"></comment-index>
     </div>
 </template>
 

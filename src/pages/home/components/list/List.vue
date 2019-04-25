@@ -24,6 +24,13 @@
                     :title="item.title"
                     :cover_url="item.cover_url"
             ></video-card>
+            <qa-card
+                    v-if="item.show_type === 'qa'"
+                    :id="item.id"
+                    :content="item.content"
+                    :user_name="item.user_name"
+                    :create_time_text="item.create_time_text"
+            ></qa-card>
         </van-panel>
     </div>
 </template>
@@ -31,11 +38,12 @@
 <script>
     import VideoCard from "../../../video/Card";
     import LoveCard from "../../../love_wall/LoveCard";
+    import QaCard from "../../../qa/Card";
 
     const module = 'index'
     export default {
         name: "IndexList",
-        components: {LoveCard, VideoCard},
+        components: {QaCard, LoveCard, VideoCard},
         data() {
             return {
                 items: [],

@@ -37,6 +37,7 @@
                     this.showInitMsg = true
             },
             '$store.state.user' (val){
+                // 维修情况
                 if (val['repair']){
                     this.$dialog.confirm({
                         title: '您的寝室报修是否完成？',
@@ -69,6 +70,13 @@
                             )
                         });
                     });
+                }
+
+                if (val['message']){
+                    this.$dialog.alert({
+                        title: '系统消息',
+                        message: val['message']['content']
+                    })
                 }
 
             }
