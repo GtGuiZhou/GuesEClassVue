@@ -25,6 +25,7 @@ export default {
             crudRecoverSuccessMsg: '恢复成功',
             crudLoadPageSuccessMsg: null,
             crudLoadAllSuccessMsg: null,
+            crudLoadSuccessMsg: null,
             crudLoadTrashedSuccessMsg: null,
         }
     },
@@ -182,6 +183,35 @@ export default {
         ,
 
         /**
+         * 加载数据
+         * @param module
+         * @param items 将加载到的数据直接放入items
+         */
+        onLoad(module,items,params) {
+            return new Promise((resolve, reject) => {
+                this.crudLoading = true
+                Api.Index(module,params).then(
+                    res => {
+                        if (this.crudLoadSuccessMsg)
+                            this.successNotify(this.crudLoadSuccessMsg)
+                        if(items){
+                            items.splice(0, items.length)
+                            res.forEach(item => items.push(item))
+                        }
+                        this.crudLoading = false
+                        return resolve(res)
+                    }
+                ).catch(
+                    res => {
+                        this.crudLoading = false
+                        return reject(res)
+                    }
+                )
+            })
+        }
+        ,
+
+        /**
          * 加载所有数据
          * @param module
          * @param items 将加载到的数据直接放入items
@@ -193,8 +223,10 @@ export default {
                     res => {
                         if (this.crudLoadAllSuccessMsg)
                             this.successNotify(this.crudLoadAllSuccessMsg)
-                        items.splice(0, items.length)
-                        res.forEach(item => items.push(item))
+                        if(items){
+                            items.splice(0, items.length)
+                            res.forEach(item => items.push(item))
+                        }
                         this.crudLoading = false
                         return resolve(res)
                     }

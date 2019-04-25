@@ -1,7 +1,7 @@
 <template>
     <div>
         <div style="text-align: right;margin-top: 15px">
-            <van-icon name="chat" size="1.2em" color="#07c160"/>&nbsp;&nbsp;&nbsp;
+            <van-icon name="chat" size="1.2em" color="#07c160" @click="$router.push('/sys/message')"/>&nbsp;&nbsp;&nbsp;
             <van-icon name="plus" size="1.2em" color="#07c160" @click="show = true"/> &nbsp;&nbsp;&nbsp;
         </div>
         <index v-if="active === 0"></index>
